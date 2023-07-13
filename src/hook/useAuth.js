@@ -1,31 +1,3 @@
-// import { useEffect, useState } from 'react';
-// import axios from 'axios';
-
-// const useAuth = (roles) => {
-//   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get('http://your-api-url-here', {
-//           headers: {
-//             Authorization: 'Bearer ' + localStorage.getItem('token'),
-//           },
-//         });
-//         const userRoles = response.data.roles;
-//         setIsAuthenticated(userRoles.some((role) => roles.includes(role)));
-//       } catch (error) {
-//         setIsAuthenticated(false);
-//       }
-//     };
-//     fetchData();
-//   }, [roles]);
-
-//   return isAuthenticated;
-// };
-
-// export default useAuth;
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 

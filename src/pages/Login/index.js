@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import config from '../../config';
 
 function Login() {
-    const [username, setUsername] = useState('');
+    const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
@@ -15,24 +15,25 @@ function Login() {
         loginButton.disabled = true;
 
         try {
-            const response = await axios.get('https://6492a604428c3d2035d06ce7.mockapi.io/lab10/api/logins', {
+            const response = await axios.post('https://ygcapi.azurewebsites.net/api/auth/login', '*/*', {
                 params: {
-                    username,
+                    phone,
                     password,
                 },
             });
 
-            const tokens = response.data;
+            const tokens = response.data.user;
+            console.log(tokens);
             const token = JSON.stringify(tokens);
 
             // Extract the roles from the response data
-            const roles = tokens.map((token) => token.roles);
+            const roles = tokens.map((token) => token.role);
 
             if (token && roles) {
                 localStorage.setItem('token', token);
                 localStorage.setItem('userRoles', JSON.stringify(roles));
                 console.log('userroles:' + JSON.stringify(roles)); // Store roles as a JSON string
-                if (roles.includes('admin')) {
+                if (roles.includes('ADMIN')) {
                     navigate(config.routes.admin);
                 } else if (roles.includes('staff')) {
                     navigate(config.routes.staff);
@@ -56,7 +57,7 @@ function Login() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Name:
-                    <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} />
+                    <input type="text" value={phone} onChange={(event) => setPhone(event.target.value)} />
                 </label>
                 <label>
                     Password:
@@ -66,7 +67,7 @@ function Login() {
                     Login
                 </button>
             </form>
-            <a href='/register'>Register new account</a>
+            <a href="/register">Register new account</a>
         </div>
     );
 }

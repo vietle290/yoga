@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ReactModal from 'react-modal';
 
-function Staff() {
+function User() {
     const [Users, setUsers] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [attendanceData, setAttendanceData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 1;
+    const itemsPerPage = 6;
     const token =
         'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwiaWF0IjoxNjg5MjA2OTMyLCJleHAiOjE2ODkyOTMzMzJ9.gahZpRUlrgRy7m6w6gC4uqJcXR7iWrkJwN2DQmEbvvw';
 
@@ -26,16 +23,6 @@ function Staff() {
         }
     };
 
-    const fetchAttendance = async (phone) => {
-        const response = await axios.get(`https://ygcapi.azurewebsites.net/api/attendance/${phone}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-        });
-        setAttendanceData(response.data);
-        setIsModalOpen(true);
-    };
     const banUnbanUser = async (userId) => {
         await axios.put(
             `https://ygcapi.azurewebsites.net/api/user/${userId}`,
@@ -63,7 +50,7 @@ function Staff() {
                 'Content-Type': 'application/json',
             },
         });
-        const userData = response.data.filter((user) => user.role === 'STAFF');
+        const userData = response.data.filter((user) => user.role === 'USER');
         setUsers(userData);
     };
 
@@ -108,9 +95,6 @@ function Staff() {
                                         {User.status === 'INACTIVE' ? 'Unban' : 'Ban'}
                                     </button>
                                 </td>
-                                <td>
-                                    <button onClick={() => fetchAttendance(User.phone)}>Check Attendance</button>
-                                </td>
                             </tr>
                         ))}
                     </tbody>
@@ -125,18 +109,8 @@ function Staff() {
                         </button>
                     ))}
             </div>
-            <ReactModal isOpen={isModalOpen} ariaHideApp={false} onRequestClose={() => setIsModalOpen(false)}>
-                {attendanceData.map((data, index) => (
-                    <div key={index}>
-                        <h2>Attendance of {data.staff.fullName}</h2>
-                        <p>Date: {data.date}</p>
-                        <p>Check in: {data.checkinTime}</p>
-                        <p>Check out: {data.checkoutTime}</p>
-                    </div>
-                ))}
-            </ReactModal>
         </div>
     );
 }
 
-export default Staff;
+export default User;

@@ -1,11 +1,15 @@
 const routes = {
-    staff: '/staff',
-    admin: '/admin',
-    member: '/member',
-    login: '/login',
-    home: '/',
+    user: '/user',
     dashboard: '/dashboard',
-    register: '/register',
+    class: '/class',
+    course: '/course',
+    room: '/room',
+    createCourse: '/createCourse',
+    createClass: '/createClass',
+    createTimeTable: '/createTimeTable',
+    timeTableList: '/timeTableList/:classId',
+    bookingManagement: '/bookingManagement',
+    staff: '/staff',
 };
 
 export default routes;
