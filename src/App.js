@@ -15,46 +15,7 @@ import BookingManagement from './pages/BookingManagement';
 import Staff from './pages/Staff';
 
 function App() {
-    // const ProtectedRoute = ({ roles, layout, component }) => {
-    //     const isAuthenticated = localStorage.getItem('token');
-    //     const userRoles = JSON.parse(localStorage.getItem('userRoles')) || [];
 
-    //     if (isAuthenticated && userRoles.some((role) => roles.includes(role))) {
-    //         const Page = component;
-    //         let Layout = layout || DefaultLayout;
-    //         if (layout === null) {
-    //             Layout = HeaderOnly;
-    //         }
-    //         return (
-    //             <Layout>
-    //                 <Page />
-    //             </Layout>
-    //         );
-    //     } else {
-    //         return <Navigate to={config.routes.login} />;
-    //     }
-    // };
-    // const [authState, setAuthState] = useState({
-    //     token: localStorage.getItem('token'),
-    //     userRoles: JSON.parse(localStorage.getItem('userRoles')) || [],
-    // });
-
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token');
-    //     const userRoles = JSON.parse(localStorage.getItem('userRoles')) || [];
-
-    //     setAuthState({ token, userRoles });
-    // }, []);
-
-    // // Function to handle logout
-    // const handleLogout = () => {
-    //     // Clear authentication information from local storage
-    //     localStorage.removeItem('token');
-    //     localStorage.removeItem('userRoles');
-
-    //     // Redirect to the login page
-    //     window.location.href = config.routes.login;
-    // };
 
     return (
         <Router>
