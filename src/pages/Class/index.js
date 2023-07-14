@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 
 function Class() {
     const token =
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwiaWF0IjoxNjg5MjA2OTMyLCJleHAiOjE2ODkyOTMzMzJ9.gahZpRUlrgRy7m6w6gC4uqJcXR7iWrkJwN2DQmEbvvw';
+        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwiaWF0IjoxNjg5MzI1MzE4LCJleHAiOjE2ODk0MTE3MTh9.pzxYhuZgJ9SLWDzj2oDACxSn7Lko6nWssHCy3xpfhbo';
     let navigate = useNavigate();
     const [Classs, setClasss] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -116,7 +116,7 @@ function Class() {
             }
         } catch (error) {
             console.error(error);
-            alert('An error occurred while deleting the Class');
+            alert('Class is on use!!!');
         }
     };
 
@@ -183,9 +183,7 @@ function Class() {
                         </tr>
                     </thead>
                     <tbody>
-                        {Classs.filter((Class) =>
-                            Class.className.toLowerCase().includes(searchTerm.toLowerCase()),
-                        )
+                        {Classs.filter((Class) => Class.className.toLowerCase().includes(searchTerm.toLowerCase()))
                             .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
                             .map((Class) => (
                                 <tr key={Class.classId}>

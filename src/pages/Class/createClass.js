@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 function CreateClass() {
     const token =
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwiaWF0IjoxNjg5MjA2OTMyLCJleHAiOjE2ODkyOTMzMzJ9.gahZpRUlrgRy7m6w6gC4uqJcXR7iWrkJwN2DQmEbvvw';
+        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwiaWF0IjoxNjg5MzI1MzE4LCJleHAiOjE2ODk0MTE3MTh9.pzxYhuZgJ9SLWDzj2oDACxSn7Lko6nWssHCy3xpfhbo';
     const navigate = useNavigate();
     const [staffList, setStaffList] = useState([]);
     const [courseList, setCourseList] = useState([]);
@@ -81,46 +81,53 @@ function CreateClass() {
         }
     };
 
+    const navigateToClass = () => {
+        navigate('/class');
+    };
+
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Class Name:
-                <input type="text" name="className" onChange={handleChange} />
-            </label>
-            <label>
-                Start Date:
-                <input type="date" name="startDate" onChange={handleChange} />
-            </label>
-            <label>
-                End Date:
-                <input type="date" name="endDate" onChange={handleChange} />
-            </label>
-            <label>
-                Capacity:
-                <input type="number" name="capacity" onChange={handleChange} />
-            </label>
-            <label>
-                Instructor Phone:
-                <select name="instructorPhone" onChange={handleChange}>
-                    {staffList.map((staff, index) => (
-                        <option key={index} value={staff.phone}>
-                            {staff.phone}
-                        </option>
-                    ))}
-                </select>
-            </label>
-            <label>
-                Course:
-                <select name="courseId" onChange={handleChange}>
-                    {courseList.map((course, index) => (
-                        <option key={index} value={course.courseId}>
-                            {course.name} {/* Display the course name */}
-                        </option>
-                    ))}
-                </select>
-            </label>
-            <input type="submit" value="Submit" />
-        </form>
+        <div>
+            <button onClick={navigateToClass}>Class</button>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Class Name:
+                    <input type="text" name="className" onChange={handleChange} />
+                </label>
+                <label>
+                    Start Date:
+                    <input type="date" name="startDate" onChange={handleChange} />
+                </label>
+                <label>
+                    End Date:
+                    <input type="date" name="endDate" onChange={handleChange} />
+                </label>
+                <label>
+                    Capacity:
+                    <input type="number" name="capacity" onChange={handleChange} />
+                </label>
+                <label>
+                    Instructor Phone:
+                    <select name="instructorPhone" onChange={handleChange}>
+                        {staffList.map((staff, index) => (
+                            <option key={index} value={staff.phone}>
+                                {staff.phone}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+                <label>
+                    Course:
+                    <select name="courseId" onChange={handleChange}>
+                        {courseList.map((course, index) => (
+                            <option key={index} value={course.courseId}>
+                                {course.name} {/* Display the course name */}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
     );
 }
 

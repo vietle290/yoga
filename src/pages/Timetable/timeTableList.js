@@ -19,7 +19,7 @@ function TimeTableList() {
     const [endDate, setEndDate] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
     const token =
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwiaWF0IjoxNjg5MjA2OTMyLCJleHAiOjE2ODkyOTMzMzJ9.gahZpRUlrgRy7m6w6gC4uqJcXR7iWrkJwN2DQmEbvvw';
+        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwiaWF0IjoxNjg5MzI1MzE4LCJleHAiOjE2ODk0MTE3MTh9.pzxYhuZgJ9SLWDzj2oDACxSn7Lko6nWssHCy3xpfhbo';
 
     const openModalWithItem = (item) => {
         setCurrentItem(item);
@@ -65,8 +65,8 @@ function TimeTableList() {
             if (response.status === 200) {
                 alert('Slot deleted successfully');
                 fetchTimeTable();
-            } else {
-                alert('Failed to delete slot');
+            } else if (response.status === 403){
+                alert('slot is on use!!!');
             } // Refresh the timetable of the class after deletion
         } catch (error) {
             console.error(error);

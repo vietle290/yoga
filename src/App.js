@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import config from './config';
 // import { DefaultLayout, HeaderOnly } from './components/Layout';
 import Dashboard from './pages/Dashboard';
@@ -15,12 +15,11 @@ import BookingManagement from './pages/BookingManagement';
 import Staff from './pages/Staff';
 
 function App() {
-
-
     return (
         <Router>
             <div className="App">
                 <Routes>
+                    <Route path="/" element={<Navigate to={config.routes.dashboard} />} />
                     <Route path={config.routes.dashboard} element={<Dashboard />} />
                     <Route path={config.routes.user} element={<User />} />
                     <Route path={config.routes.class} element={<Class />} />

@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 
 function Course() {
     const token =
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwiaWF0IjoxNjg5MjA2OTMyLCJleHAiOjE2ODkyOTMzMzJ9.gahZpRUlrgRy7m6w6gC4uqJcXR7iWrkJwN2DQmEbvvw';
+        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwiaWF0IjoxNjg5MzI1MzE4LCJleHAiOjE2ODk0MTE3MTh9.pzxYhuZgJ9SLWDzj2oDACxSn7Lko6nWssHCy3xpfhbo';
     let navigate = useNavigate();
     const [courses, setCourses] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -80,7 +80,7 @@ function Course() {
             }
         } catch (error) {
             console.error(error);
-            alert('An error occurred while deleting the course');
+            alert('Course is on use!!!');
         }
     };
 

@@ -9,7 +9,7 @@ function CreateTimeTable() {
     const [rooms, setRooms] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const token =
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwiaWF0IjoxNjg5MjA2OTMyLCJleHAiOjE2ODkyOTMzMzJ9.gahZpRUlrgRy7m6w6gC4uqJcXR7iWrkJwN2DQmEbvvw';
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTIzNDU2Nzg5IiwiaWF0IjoxNjg5MzI1MzE4LCJleHAiOjE2ODk0MTE3MTh9.pzxYhuZgJ9SLWDzj2oDACxSn7Lko6nWssHCy3xpfhbo';
     const [form, setForm] = useState({
         // timetableId: 0,
         // slotNo: 0,
@@ -126,6 +126,10 @@ function CreateTimeTable() {
         return `${yyyy}-${MM}-${dd} ${HH}:${mm}:${ss}`;
     };
 
+    const navigateToClass = () => {
+        navigate('/class');
+    };
+
     const handleChange = (e) => {
         if (e.target.name === 'time') {
             let date = new Date(e.target.value);
@@ -156,52 +160,55 @@ function CreateTimeTable() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Start Date:
-                <p>{form.startDate}</p>
-            </label>
-            <label>
-                End Date:
-                <p>{form.endDate}</p>
-            </label>
-            <label>{errorMessage && <p>{errorMessage}</p>}</label>
-            <label>
-                Time:
-                <input type="datetime-local" name="time" onChange={handleChange} title="Enter the Time" />
-            </label>
-            <label>
-                Class ID:
-                <select name="classId" onChange={handleChange} title="Select the Class ID">
-                    {classes.map((classItem) => (
-                        <option key={classItem.classId} value={classItem.classId}>
-                            {classItem.className}
-                        </option>
-                    ))}
-                </select>
-            </label>
-            <label>
-                Instructor ID:
-                <select name="instructorId" onChange={handleChange} title="Select the Instructor ID">
-                    {instructors.map((instructor) => (
-                        <option key={instructor.userId} value={instructor.userId}>
-                            {instructor.fullName}
-                        </option>
-                    ))}
-                </select>
-            </label>
-            <label>
-                Room ID:
-                <select name="roomId" onChange={handleChange} title="Select the Room ID">
-                    {rooms.map((room) => (
-                        <option key={room.roomId} value={room.roomId}>
-                            {room.name}
-                        </option>
-                    ))}
-                </select>
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+        <div>
+            <button onClick={navigateToClass}>Class</button>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Start Date:
+                    <p>{form.startDate}</p>
+                </label>
+                <label>
+                    End Date:
+                    <p>{form.endDate}</p>
+                </label>
+                <label>{errorMessage && <p>{errorMessage}</p>}</label>
+                <label>
+                    Time:
+                    <input type="datetime-local" name="time" onChange={handleChange} title="Enter the Time" />
+                </label>
+                <label>
+                    Class ID:
+                    <select name="classId" onChange={handleChange} title="Select the Class ID">
+                        {classes.map((classItem) => (
+                            <option key={classItem.classId} value={classItem.classId}>
+                                {classItem.className}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+                <label>
+                    Instructor ID:
+                    <select name="instructorId" onChange={handleChange} title="Select the Instructor ID">
+                        {instructors.map((instructor) => (
+                            <option key={instructor.userId} value={instructor.userId}>
+                                {instructor.fullName}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+                <label>
+                    Room ID:
+                    <select name="roomId" onChange={handleChange} title="Select the Room ID">
+                        {rooms.map((room) => (
+                            <option key={room.roomId} value={room.roomId}>
+                                {room.name}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     );
 }
 
